@@ -48,12 +48,13 @@ if uploaded_file is not None and SecretKey:
             }
             try:
                 response = requests.post(url, headers=headers, data=json.dumps(data))
-                response = response.json()
-                st.json(response)
-                df.at[index, 'api_response'] = response
+                # response = response.json()
+                st.write(response.status_code)  
+                df.at[index, 'api_response'] = f"{str(response.status_code)}"
             except requests.exceptions.RequestException as e:
-                st.error(f"An error occurred: {e}")
-                df.at[index, 'api_response'] = f"Error: {str(e)}"
+                # st.error(f"An error occurred: {e}")
+                st.write(response.status_code) 
+                df.at[index, 'api_response'] = f"{response.status_code}: {str(e)}"
             
 
 
@@ -64,15 +65,6 @@ if uploaded_file is not None and SecretKey:
                 file_name="updated_data.csv",
                 mime="text/csv"
             )
-
-
-        
-
-
-
-
-
-
 
 
 
