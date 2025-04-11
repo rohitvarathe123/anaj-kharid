@@ -13,7 +13,6 @@ headers = {
     "Content-Type": "application/json",
     "SecretKey": SecretKey
 }
-# "816F2CD5-C9DB-4AFE-972B-7C3ED0EEEBD9"
 st.write("CSV File Uploader")
 uploaded_file = st.file_uploader("Upload a CSV file", type=["csv"])
 
